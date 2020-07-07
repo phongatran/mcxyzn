@@ -6,9 +6,21 @@
 #include <stdint.h>
 #include <omp.h>
 #include <stdbool.h>
+#include <omp.h>
 
 #define STRLEN 		32          /* String length. */
 #define Ntiss		19          /* Number of tissue types. */
+#define ls          5E-6      /* Moving photon a little bit off the voxel face */
+#define	PI          3.1415926
+#define	LIGHTSPEED	2.997925E10 /* in vacuo speed of light [cm/s] */
+#define ALIVE       1   		/* if photon not yet terminated */
+#define DEAD        0    		/* if photon is to be terminated */
+#define THRESHOLD   0.001		/* used in roulette */
+#define CHANCE      10  		/* used in roulette */
+#define Boolean     char
+#define SQR(x)		pow(x,2)
+#define SIGN(x)     ((x)>=0 ? 1:-1)
+#define MAX_TIR     500
 
 typedef struct mcxyz_config {
   int   mcflag, launchflag, boundaryflag, gradientflag;
@@ -47,6 +59,14 @@ typedef struct mcxyz_float4 {
 } float4;
 
 /* DECLARE FUNCTIONS */
-void mcxyz_init(mcconfig *cfg,int argc, const char * argv[]);
-void mcxyz_launchsimulation(mcconfig *cfg);
-void mcxyz_kernel(mcconfig *cfg,unsigned char *v,float *F,int *dseed,float4 *g,const int Nphotons);
+void mcxyzn_init(mcconfig *cfg,int argc, const char * argv[]);
+void mcxyzn_launchsimulation(mcconfig *cfg);
+void mcxyzn_kernel(mcconfig *cfg,unsigned char *v,float *F,int *dseed,float4 *g,const int Nphotons);
+static inline unsigned long rotl(const unsigned long x, int k);
+float RandomGen(unsigned long* s);
+void LaunchPhoton(mcconfig* cfg, float4* pos, float4* u, float* rnd, unsigned long* seed);
+int SameVoxel(mcconfig* cfg, float x1, float y1, float z1, float x2, float y2, float z2);
+float FindVoxelFace2(mcconfig* cfg, float x1, float y1, float z1, float x2, float y2, float z2, float ux, float uy, float uz);
+float RFresnel(float4* u, float4* g, float4* gb, float n1, float n2, unsigned long* seed, int* TIR_events, float* status);
+int getindex(mcconfig* cfg, int x, int y, int z);
+void InterpGradient(mcconfig* cfg, float4* g, unsigned char* v, float4* pos, float4* n, unsigned char tissue);
