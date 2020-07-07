@@ -14,6 +14,19 @@ Similarly to *mcxyz.c*, the extension mcxyzn is written in ANSI standard C, but 
 The 3D Monte Carlo generates an output file of relative fluence rate, F(y,x,z) [W/cm<sup>2</sup> per W delivered] or [1/cm<sup>2</sup>]. The spatial distribution of absorption is obtained by the product of the fluence rate and the absorption coefficient: A(y,x,z) [1/cm<sup>3</sup>] = F(y,x,z) x muav(T(y,x,z), where muav(i) [cm<sup>-1</sup>] is the absorption coefficient of the ith tissue type (the v is for voxel).
 
 ## Compiling and availability of binaries
+### OpenMP version (static linking):
+#### Windows (Using MingGW)
+> ln -s `gcc -print-file-name=libgomp.a` #-static -static-libgcc -Wno-unused-result
+> gcc -o mcxyzn.exe mcxyzn.c  -lm -m32 -static -static-libgcc -L. -fopenmp 
+
+#### Linux
+> ln -s `gcc -print-file-name=libgomp.a`
+> gcc -o mcxyzn.linux mcxyzn.c -Wno-unused-result -static -static-libgcc -L. -m64 -lm -fopenmp -O3 
+
+#### Mac
+> ln -sf /usr/local/opt/libomp/lib/libomp.a
+> clang -Xpreprocessor -fopenmp -lomp -o mcxyzn.mac mcxyzn.c
+> otool -L mcxyzn_mac
 
 ## Methodology
 In this work, we introduce the "surface normal approach" that, instead of using the 6 facets of a cube to calculate the normal vector to a mismatched boundary, calculates a more accurate normal direction to the surface using the information of neighboring voxels. In the presence of mismatched boundaries, this represent an important difference between what has been traditionally done and the present work.
