@@ -13,10 +13,12 @@ Similarly to *mcxyz.c*, the extension mcxyzn is written in ANSI standard C, but 
 
 The 3D Monte Carlo generates an output file of relative fluence rate, F(y,x,z) [W/cm<sup>2</sup> per W delivered] or [1/cm<sup>2</sup>]. The spatial distribution of absorption is obtained by the product of the fluence rate and the absorption coefficient: A(y,x,z) [1/cm<sup>3</sup>] = F(y,x,z) x muav(T(y,x,z), where muav(i) [cm<sup>-1</sup>] is the absorption coefficient of the ith tissue type (the v is for voxel).
 
+## Compiling and availability of binaries
+
 ## Methodology
 In this work, we introduce the "surface normal approach" that, instead of using the 6 facets of a cube to calculate the normal vector to a mismatched boundary, calculates a more accurate normal direction to the surface using the information of neighboring voxels. In the presence of mismatched boundaries, this represent an important difference between what has been traditionally done and the present work.
 <p align="center">
-<img src="images/figure_1.png" width="450">
+<img src="images/figure_1.png" width="350">
 </p>
 
 The essence of the proposed approach is to incorporate the *Sobel filter* (from image processing) to obtain an approximation to the normal vector that properly accounts for curvature effects and oblique angles as well as a 3D smoothing technique for vector fields (*smoothn*, for which citation information can be found at https://www.mathworks.com/matlabcentral/fileexchange/25634-smoothn). 
@@ -24,3 +26,8 @@ The essence of the proposed approach is to incorporate the *Sobel filter* (from 
 <p align="center">
 <img src="images/figure_2.png" width="750">
 </p>
+
+## Use
+
+## Examples
+
