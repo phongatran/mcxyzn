@@ -20,14 +20,14 @@ The 3D Monte Carlo generates an output file of relative fluence rate, F(y,x,z) [
 >
 > gcc -o mcxyzn.exe mcxyzn_subroutines.c mcxyzn.c  -lm -m32 -static -static-libgcc -L. -fopenmp 
 
-[Latest Windows binary](https://phongatran.com/mcxyzn/mcxzyn.exe)
+[Latest Windows binary](https://phongatran.com/mcxyzn/mcxyzn.exe)
 
 #### Linux
 > ln -s `gcc -print-file-name=libgomp.a`
 >
 > gcc -o mcxyzn.linux mcxyzn_subroutines.c mcxyzn.c -Wno-unused-result -static -static-libgcc -L. -m64 -lm -fopenmp -O3 
 
-[Latest Linux binary](https://phongatran.com/mcxyzn/mcxzyn.linux)
+[Latest Linux binary](https://phongatran.com/mcxyzn/mcxyzn.linux)
 
 #### Mac
 > ln -sf /usr/local/opt/libomp/lib/libomp.a
@@ -36,7 +36,7 @@ The 3D Monte Carlo generates an output file of relative fluence rate, F(y,x,z) [
 >
 > otool -L mcxyzn_mac
 
-[Latest Mac binary](https://phongatran.com/mcxyzn/mcxzyn.mac)
+[Latest Mac binary](https://phongatran.com/mcxyzn/mcxyzn.mac)
 
 ## Methodology
 In this work, we introduce the "surface normal approach" that, instead of using the 6 facets of a cube to calculate the normal vector to a mismatched boundary, calculates a more accurate normal direction to the surface using the information of neighboring voxels. In the presence of mismatched boundaries, this represent an important difference between what has been traditionally done and the present work.
