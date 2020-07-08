@@ -14,25 +14,27 @@ Similarly to *mcxyz.c*, the extension mcxyzn is written in ANSI standard C, but 
 The 3D Monte Carlo generates an output file of relative fluence rate, F(y,x,z) [W/cm<sup>2</sup> per W delivered] or [1/cm<sup>2</sup>]. The spatial distribution of absorption is obtained by the product of the fluence rate and the absorption coefficient: A(y,x,z) [1/cm<sup>3</sup>] = F(y,x,z) x muav(T(y,x,z), where muav(i) [cm<sup>-1</sup>] is the absorption coefficient of the ith tissue type (the v is for voxel).
 
 ## Compiling and availability of binaries
+To run the examples, it is assumed that the binary exists is located in the root folder.
+
 ### OpenMP version (statically linked):
 #### Windows (Using MingGW)
 > ln -s `gcc -print-file-name=libgomp.a` #-static -static-libgcc -Wno-unused-result
 >
-> gcc -o mcxyzn.exe mcxyzn_subroutines.c mcxyzn.c  -lm -m32 -static -static-libgcc -L. -fopenmp 
+> gcc -o mcxyzn.exe mcxyzn.c  -lm -m32 -static -static-libgcc -L. -fopenmp 
 
 [Latest Windows binary](https://phongatran.com/mcxyzn/mcxyzn.exe)
 
 #### Linux
 > ln -s `gcc -print-file-name=libgomp.a`
 >
-> gcc -o mcxyzn.linux mcxyzn_subroutines.c mcxyzn.c -Wno-unused-result -static -static-libgcc -L. -m64 -lm -fopenmp -O3 
+> gcc -o mcxyzn.linux mcxyzn.c -Wno-unused-result -static -static-libgcc -L. -m64 -lm -fopenmp -O3 
 
 [Latest Linux binary](https://phongatran.com/mcxyzn/mcxyzn.linux)
 
 #### Mac
 > ln -sf /usr/local/opt/libomp/lib/libomp.a
 >
-> clang -Xpreprocessor -fopenmp -lomp -o mcxyzn.mac mcxyzn.c mcxyzn_subroutines.c
+> clang -Xpreprocessor -fopenmp -lomp -o mcxyzn.mac mcxyzn.c
 >
 > otool -L mcxyzn_mac
 
@@ -47,10 +49,26 @@ In this work, we introduce the "surface normal approach" that, instead of using 
 The essence of the proposed approach is to incorporate the *Sobel filter* (from image processing) to obtain an approximation to the normal vector that properly accounts for curvature effects and oblique angles as well as a 3D smoothing technique for vector fields (*smoothn*, for which citation information can be found at https://www.mathworks.com/matlabcentral/fileexchange/25634-smoothn). 
 
 <p align="center">
-<img src="images/figure_2.png" width="750">
+<img src="images/figure_2.png" width="400">
 </p>
 
-## Use
-
 ## Examples
+### Lens sitting on top of a water medium
 
+<p align="center">
+<img src="images/lens_water.png" width="400">
+</p>
+
+<p align="center">
+<img src="images/lens_water_fluence.png" width="400">
+</p>
+
+### Light hitting a spherical surface with different refractive index
+
+<p align="center">
+<img src="images/sphere.png" width="400">
+</p>
+
+<p align="center">
+<img src="images/sphere_fluence.png" width="400">
+</p>

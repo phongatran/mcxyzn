@@ -1,3 +1,6 @@
 *.exe
 *.mac
 *.linux
+*.bin
+*.mci
+*_props.m

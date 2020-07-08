@@ -85,7 +85,7 @@ axis equal image
 Fzx = reshape(F(:,Ny/2,:),Nx,Nz)'; % in z,x plane through source
 
 figure(2);clf
-imagesc(x,z,log10(Fzx))
+imagesc(x,z,log10(Fzx),[-4 2.5])
 hold on
 text(max(x)*1.2,min(z)-0.04*max(z),'log_{10}( \phi )','fontsize',fz)
 colorbar
@@ -105,7 +105,7 @@ text(min(x)-0.2*max(x),min(z)-0.08*max(z),sprintf('runtime = %0.1f min',cfg.time
 Fzy = reshape(F(Nx/2,:,:),Ny,Nz)'; % in z,x plane through source
 
 figure(3);clf
-imagesc(x,z,log10(Fzy))
+imagesc(x,z,log10(Fzy),[-4 2.5])
 hold on
 text(max(x)*1.2,min(z)-0.04*max(z),'log_{10}( \phi )','fontsize',fz)
 colorbar

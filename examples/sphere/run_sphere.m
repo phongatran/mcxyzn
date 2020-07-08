@@ -6,7 +6,7 @@ addpath ../../matlab_functions/
 cfg.SAVEON = 1; % 1 = save myname_T.bin, myname_H.mci 
                 % 0 = don't save. Just check the program.
 cfg.name = 'sphere';
-cfg.time = 0.25;               %Simulation time in min
+cfg.time = 5.0;               %Simulation time in min
 Nbins = 200;
 cfg.binsize = 0.01;        %Length of a voxel
 cfg.dim = [Nbins,Nbins,Nbins]; %Number of voxels in each direction [Nx,Ny,Nz]
@@ -18,7 +18,7 @@ cfg.launchflag   = 0;   % 0 = let mcxyz.c calculate launch trajectory
 cfg.boundaryflag = 1;   % 0 = no boundaries, 1 = escape at boundaries
                         % 2 = escape at surface only. No x,y, bottom z
                         % boundaries
-cfg.gradientflag = 1;   % 0 = Fresnel's law using the voxel faces [inaccurate for curved and oblique geometries]
+cfg.gradientflag = 2;   % 0 = Fresnel's law using the voxel faces [inaccurate for curved and oblique geometries]
                         % 1 = gradient-based Fresnel's laws w. smoothing
                         % 2 = gradient-based Fresnel's laws w. smoothing and interpolation 
 cfg.srcpos   = [0,0,0.01];   % Set position of source [x,y,z];

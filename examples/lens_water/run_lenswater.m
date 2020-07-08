@@ -6,7 +6,7 @@ addpath ../../matlab_functions/
 cfg.SAVEON = 1; % 1 = save myname_T.bin, myname_H.mci 
                 % 0 = don't save. Just check the program.
 cfg.name = 'lens_water';
-cfg.time = 0.25;               %Simulation time in min
+cfg.time = 1;               %Simulation time in min
 Nbins = 200;
 cfg.binsize = 0.01;        %Length of a voxel
 cfg.dim = [Nbins,Nbins,Nbins]; %Number of voxels in each direction [Nx,Ny,Nz]

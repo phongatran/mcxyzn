@@ -104,7 +104,7 @@ if cfg.gradientflag > 0
             end
         end
         [Gx,Gy,Gz] = imgradientxyz(n_map);
-        smooth_map = smoothn({Gx,Gy,Gz},1000);
+        smooth_map = smoothn({Gx,Gy,Gz},2);
         gradient_map_x(n_map == 1) = smooth_map{1}(n_map==1);
         gradient_map_y(n_map == 1) = smooth_map{2}(n_map==1);
         gradient_map_z(n_map == 1) = smooth_map{3}(n_map==1);
