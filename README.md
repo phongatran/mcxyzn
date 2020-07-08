@@ -49,26 +49,26 @@ In this work, we introduce the "surface normal approach" that, instead of using 
 The essence of the proposed approach is to incorporate the *Sobel filter* (from image processing) to obtain an approximation to the normal vector that properly accounts for curvature effects and oblique angles as well as a 3D smoothing technique for vector fields (*smoothn*, for which citation information can be found at https://www.mathworks.com/matlabcentral/fileexchange/25634-smoothn). 
 
 <p align="center">
-<img src="images/figure_2.png" width="400">
+<img src="images/figure_2.png" width="600">
 </p>
 
 ## Examples
 ### Lens sitting on top of a water medium
 
 <p align="center">
-<img src="images/lens_water.png" width="400">
+<img src="images/lens_water.png" width="480">
 </p>
 
 <p align="center">
-<img src="images/lens_water_fluence.png" width="400">
+<img src="images/lens_water_fluence.png" width="480">
 </p>
 
 ### Light hitting a spherical surface with different refractive index
 
 <p align="center">
-<img src="images/sphere.png" width="400">
+<img src="images/sphere.png" width="480">
 </p>
 
 <p align="center">
-<img src="images/sphere_fluence.png" width="400">
+<img src="images/sphere_fluence.png" width="480">
 </p>
